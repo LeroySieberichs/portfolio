@@ -13,6 +13,8 @@ import {
   useDisclosure,
   BoxProps,
   FlexProps,
+  Button,
+  Container,
 } from '@chakra-ui/react';
 import {
   FiMenu
@@ -20,9 +22,12 @@ import {
 import {
   Link
 } from "react-router-dom";
+import firebase from 'firebase';
+import { useAuthState } from 'react-firebase-hooks/auth';
 
 export default function Sidebar({ children }: { children: ReactNode }) {
   const { isOpen, onOpen, onClose } = useDisclosure();
+  
   return (
     <Box minH="100vh" bg={useColorModeValue('gray.100', 'gray.900')}>
       <SidebarContent
@@ -53,8 +58,24 @@ export default function Sidebar({ children }: { children: ReactNode }) {
 interface SidebarProps extends BoxProps {
   onClose: () => void;
 }
+const logout = () => {
+  firebase.auth().signOut();
+};
+
+function Loggedin(props) {
+  const loggedin = props.isloggedin;
+  console.log(loggedin);
+  
+  if (loggedin) {
+    return <Button onClick={logout} colorScheme="teal" size="lg">
+      Logout
+    </Button>
+  }
+  return null;
+}
 
 const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
+  const [user, loading, error] = useAuthState(firebase.auth());
   return (
     <Box
       bg={useColorModeValue('white', 'gray.900')}
@@ -69,14 +90,22 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
           Logo
         </Text>
         <CloseButton display={{ base: 'flex', md: 'none' }} onClick={onClose} />
+        
       </Flex>
       {LinkItems.map((link) => (
         <Link key={link.name} to={link.link}>
-        <NavItem key={link.name} icon={link.icon}>
-          {link.name}
-        </NavItem>
+          <NavItem key={link.name} icon={link.icon}>
+            {link.name}
+          </NavItem>
         </Link>
       ))}
+      
+      <Container>
+      <Loggedin isloggedin={user} />
+
+
+
+      </Container>
     </Box>
   );
 };
@@ -108,6 +137,7 @@ const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
       <Text fontSize="2xl" ml="8" fontFamily="monospace" fontWeight="bold">
         Logo
       </Text>
+
     </Flex>
   );
 };

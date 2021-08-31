@@ -17,16 +17,22 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link,
   Redirect,
   useHistory,
   useLocation
 } from "react-router-dom";
+import firebase from "firebase";
+
 
 
 export default function Login() {
-  const [email, setEmail] = useState();
-  const [password, setPassword] = useState();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [user, loading, error] = useAuthState(firebase.auth());
+  const login = () => {
+    firebase.auth().signInWithEmailAndPassword(email, password);
+  };
+
 
   return (
     <Stack minH={'100vh'} direction={{ base: 'column', md: 'row' }}>
