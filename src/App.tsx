@@ -1,38 +1,33 @@
 import * as React from "react"
 import {
   ChakraProvider,
-  Box,
-  Text,
-  Link,
-  VStack,
-  Code,
-  Grid,
   theme,
 } from "@chakra-ui/react"
-import { ColorModeSwitcher } from "./ColorModeSwitcher"
-import { Logo } from "./Logo"
+import Home from "./Pages/Home"
+import Fontys from "./Pages/Fontys"
+import {
+  Switch,
+  Route
+} from "react-router-dom";
 
 export const App = () => (
   <ChakraProvider theme={theme}>
-    <Box textAlign="center" fontSize="xl">
-      <Grid minH="100vh" p={3}>
-        <ColorModeSwitcher justifySelf="flex-end" />
-        <VStack spacing={8}>
-          <Logo h="40vmin" pointerEvents="none" />
-          <Text>
-            Edit <Code fontSize="xl">src/App.tsx</Code> and save to reload.
-          </Text>
-          <Link
-            color="teal.500"
-            href="https://chakra-ui.com"
-            fontSize="2xl"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn Chakra
-          </Link>
-        </VStack>
-      </Grid>
-    </Box>
+    <Switch>
+      {/* If the current URL is /about, this route is rendered
+            while the rest are ignored */}
+      <Route path="/fontys">
+        <Fontys />
+      </Route>
+
+      {/* If none of the previous routes render anything,
+            this route acts as a fallback.
+
+            Important: A route with path="/" will *always* match
+            the URL because all URLs begin with a /. So that's
+            why we put this one last of all */}
+      <Route path="/">
+        <Home />
+      </Route>
+    </Switch>
   </ChakraProvider>
 )
