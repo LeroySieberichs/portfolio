@@ -14,7 +14,7 @@ const firebaseConfig = {
     measurementId: "G-FPT5KRSEN0"
   };
 
-const env = process.env.NODE_ENV;
+// const env = process.env.NODE_ENV;
 
 if (!firebase.apps.length) {
   firebase.initializeApp(firebaseConfig);

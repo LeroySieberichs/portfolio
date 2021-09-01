@@ -75,7 +75,8 @@ function Loggedin(props) {
 }
 
 const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
-  const [user, loading, error] = useAuthState(firebase.auth());
+  const [user] = useAuthState(firebase.auth());
+  // , loading, error
   return (
     <Box
       bg={useColorModeValue('white', 'gray.900')}
