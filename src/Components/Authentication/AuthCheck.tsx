@@ -4,16 +4,6 @@ import {
     Box,
     Spinner,
   } from "@chakra-ui/react"
-  import {
-    BrowserRouter as Router,
-    Switch,
-    Route,
-    Link,
-    Redirect,
-    useHistory,
-    useLocation
-  } from "react-router-dom";
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth } from "../../lib/firebase";
 export default function AuthCheck(props) {
