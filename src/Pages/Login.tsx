@@ -11,16 +11,6 @@ import {
   Stack,
   Image,
 } from '@chakra-ui/react';
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
-import { useAuthState } from 'react-firebase-hooks/auth';
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Redirect,
-  useHistory,
-  useLocation
-} from "react-router-dom";
 import firebase from "firebase";
 
 
@@ -28,7 +18,6 @@ import firebase from "firebase";
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [user, loading, error] = useAuthState(firebase.auth());
   const login = () => {
     firebase.auth().signInWithEmailAndPassword(email, password);
   };
