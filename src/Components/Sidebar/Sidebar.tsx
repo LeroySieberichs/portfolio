@@ -62,7 +62,7 @@ const logout = () => {
   firebase.auth().signOut();
 };
 
-function Loggedin(props) {
+function Loggedin(props: { isloggedin: any; }) {
   const loggedin = props.isloggedin;
   console.log(loggedin);
   

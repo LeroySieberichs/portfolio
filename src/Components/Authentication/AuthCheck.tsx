@@ -7,8 +7,14 @@ import {
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth } from "../../lib/firebase";
 export default function AuthCheck(props) {
-    const [user, loading] = useAuthState(auth);
-  
+    const [user, loading,error] = useAuthState(auth);
+    if (error) {
+      return (
+        <div>
+          <p>Error: {error}</p>
+        </div>
+      );
+    }
     if (loading)
       return (
         <Box h="600px">

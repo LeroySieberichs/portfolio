@@ -12,6 +12,7 @@ import {
   Image,
 } from '@chakra-ui/react';
 import firebase from "firebase";
+import toast, { Toaster } from "react-hot-toast";
 
 
 
@@ -19,9 +20,11 @@ export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const login = () => {
-    firebase.auth().signInWithEmailAndPassword(email, password);
+    firebase.auth().signInWithEmailAndPassword(email, password)
+    .catch(function(error) {
+      return(toast.error("Invalid credentials"))
+    })
   };
-
 
   return (
     <Stack minH={'100vh'} direction={{ base: 'column', md: 'row' }}>
@@ -45,6 +48,8 @@ export default function Login() {
                 <Checkbox>Remember me</Checkbox>
                 <Link color={'blue.500'}>Forgot password?</Link>
               </Stack>
+              
+              <Toaster />
               <Button onClick={login} colorScheme={'blue'} variant={'solid'}>
                 Sign in
               </Button>
