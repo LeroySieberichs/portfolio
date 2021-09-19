@@ -64,7 +64,6 @@ const logout = () => {
 
 function Loggedin(props: { isloggedin: any; }) {
   const loggedin = props.isloggedin;
-  console.log(loggedin);
   
   if (loggedin) {
     return <Button onClick={logout} colorScheme="teal" size="lg">
