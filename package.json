@@ -3,7 +3,6 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@babel/core": "7.12.3",
     "@chakra-ui/react": "^1.6.7",
     "@emotion/react": "^11.4.1",
     "@emotion/styled": "^11.3.0",
@@ -27,6 +26,7 @@
     "camelcase": "^6.1.0",
     "case-sensitive-paths-webpack-plugin": "2.3.0",
     "css-loader": "4.3.0",
+    "csstype": "^3.0.9",
     "dotenv": "8.2.0",
     "dotenv-expand": "5.1.0",
     "eslint": "^7.11.0",
@@ -103,6 +103,7 @@
     ]
   },
   "devDependencies": {
+    "@babel/core": "^7.12.3",
     "@types/react-router": "^5.1.16",
     "@types/react-router-dom": "^5.1.8",
     "react-hot-toast": "^2.1.1",
