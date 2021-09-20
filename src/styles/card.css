@@ -1,0 +1,8 @@
+p{
+    white-space: pre-wrap;
+}
+span{
+    text-overflow: ellipsis;
+white-space: pre-wrap;
+overflow: hidden;
+}

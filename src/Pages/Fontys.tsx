@@ -1,7 +1,5 @@
 import React from 'react'
-import { firestore } from "../lib/firebase";
 import Sidebar from "../Components/Sidebar/Sidebar"
-import { useCollectionData } from 'react-firebase-hooks/firestore';
 import AuthCheck from "@components/Authentication/AuthCheck"
 import { Tabs, TabList, Tab, TabPanels, TabPanel } from '@chakra-ui/react'
 import Card from "../Components/Cards/Card"
@@ -18,10 +16,14 @@ export default function Fontys() {
                 <Sidebar>
                     <Tabs>
                         <TabList>
+                            <Tab>Assignments</Tab>
                             <Tab>September</Tab>
                         </TabList>
 
                         <TabPanels>
+                        <TabPanel>
+                            <Card month ="Assignment" />
+                            </TabPanel>
                             <TabPanel>
                             <Card month ="September" />
                             </TabPanel>

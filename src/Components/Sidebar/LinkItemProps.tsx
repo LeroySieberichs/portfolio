@@ -2,9 +2,6 @@
 import {
   FiHome,
   FiTrendingUp,
-  FiCompass,
-  FiStar,
-  FiSettings,
 } from 'react-icons/fi';
 import { IconType } from 'react-icons';
 

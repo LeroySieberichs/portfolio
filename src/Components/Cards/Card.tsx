@@ -1,15 +1,16 @@
-import { Box, Container, Flex, Image, Link } from '@chakra-ui/react'
+import { Box, Container, Image, Link } from '@chakra-ui/react'
 import { firestore } from "lib/firebase"
 import { useCollectionData } from 'react-firebase-hooks/firestore';
-import { useColorModeValue, chakra, useColorMode } from '@chakra-ui/system'
+import { chakra, useColorMode } from '@chakra-ui/system'
 import React from 'react'
+import '../../styles/card.css'
 
 export default function Card(props: { month: any; }) {
 
   var cardList: JSX.Element[] = []
 
 
-  const { colorMode, toggleColorMode } = useColorMode()
+  const { colorMode } = useColorMode()
 
   const [value, loading, error] = useCollectionData(
     firestore.collection('portfolio').where("month", "==", props.month),
@@ -22,34 +23,36 @@ export default function Card(props: { month: any; }) {
     data.forEach((item: any) => {
 
       cardList.push(card(item))
-      console.log(item);
 
 
 
     })
-    var sortedArray = cardList.sort((a, b) => (a > b) ? -1 : 1)
+    var sortedArray = cardList.sort((a, b) => (a > b) ? 1 : -1)
     return sortedArray;
   }
 
-  const image = (data) => {
+  const image = (data: string) => {
     console.log(data);
 
-    if (data != " ") {
+    if (data != null) {
       return (
-        <Image
-          roundedTop="lg"
-          w="full"
-          h={64}
-          fit="cover"
-          src={process.env.PUBLIC_URL + 'img/' + data + '.png'}
-          alt="Article"
-        />
+        <Link href={process.env.PUBLIC_URL + 'img/' + data + '.png'} isExternal>
+          <Image
+            roundedTop="lg"
+            w="full"
+            h={64}
+            fit="cover"
+            src={process.env.PUBLIC_URL + 'img/' + data + '.png'}
+            alt="Article"
+          />
+        </Link>
+
       )
     }
     return null
   }
 
-  const card = (data: { imagename: string; title: boolean | React.ReactChild | React.ReactFragment | React.ReactPortal | null | undefined; description: boolean | React.ReactChild | React.ReactFragment | React.ReactPortal | null | undefined; }) => {
+  const card = (data: { imagename: any; title: boolean | React.ReactChild | React.ReactFragment | React.ReactPortal | null | undefined; description: boolean | React.ReactChild | React.ReactFragment | React.ReactPortal | null | undefined; feedback: string; }) => {
     return (
       <div>
         <Box
@@ -79,15 +82,15 @@ export default function Card(props: { month: any; }) {
                 fontSize="sm"
                 color={colorMode}
               >
-                {data.description}
+                <span>{data.description}</span>
               </chakra.p>
             </Box>
-
-
+            
           </Box>
+          {image(data.feedback)}
         </Box>
         <Container maxW="xl" centerContent>
-          <Box padding="4"  maxW="3xl">
+          <Box padding="4" maxW="3xl">
 
           </Box>
         </Container>
