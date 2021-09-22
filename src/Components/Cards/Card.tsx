@@ -27,7 +27,7 @@ export default function Card(props: { month: any; }) {
 
 
     })
-    var sortedArray = cardList.sort((a, b) => (a > b) ? 1 : -1)
+    var sortedArray = cardList.sort((a, b) => (a > b) ? -1 : 1)
     return sortedArray;
   }
 

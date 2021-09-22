@@ -1,7 +1,6 @@
 
 import {
-  FiHome,
-  FiTrendingUp,
+  FiHome
 } from 'react-icons/fi';
 import { IconType } from 'react-icons';
 
@@ -11,8 +10,7 @@ interface LinkItemProps {
     link: string;
   }
   const LinkItems: Array<LinkItemProps> = [
-    { name: 'Home', icon: FiHome, link: '' },
-    { name: 'Fontys', icon: FiTrendingUp, link: 'fontys' },
+    { name: 'Home', icon: FiHome, link: '' }
   ];
 
 export default LinkItems;

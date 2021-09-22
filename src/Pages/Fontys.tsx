@@ -1,6 +1,5 @@
 import React from 'react'
 import Sidebar from "../Components/Sidebar/Sidebar"
-import AuthCheck from "@components/Authentication/AuthCheck"
 import { Tabs, TabList, Tab, TabPanels, TabPanel } from '@chakra-ui/react'
 import Card from "../Components/Cards/Card"
 
@@ -11,7 +10,7 @@ export default function Fontys() {
 
     return (
         <div>
-            <AuthCheck>
+
 
                 <Sidebar>
                     <Tabs>
@@ -37,7 +36,6 @@ export default function Fontys() {
                     </Tabs>
                 </Sidebar>
 
-            </AuthCheck>
         </div>
     )
 }
