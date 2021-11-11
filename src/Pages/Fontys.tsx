@@ -17,6 +17,9 @@ export default function Fontys() {
                         <TabList>
                             <Tab>Assignments</Tab>
                             <Tab>September</Tab>
+                            <Tab>Oktober</Tab>
+                            <Tab>November</Tab>
+                            <Tab>Learning Outcome</Tab>
                         </TabList>
 
                         <TabPanels>
@@ -28,6 +31,21 @@ export default function Fontys() {
                             </TabPanel>
                             <TabPanel>
                             <Card month ="Oktober" />
+                            </TabPanel>
+                            <TabPanel>
+                            <Card month ="November" />
+                            </TabPanel>
+                            <TabPanel>
+                            <Card month ="LearningOutcome" />
+                            </TabPanel>
+                            <TabPanel>
+                            <Card month ="ProfessionalGrowth" />
+                            </TabPanel>
+                            <TabPanel>
+                            <Card month ="DuoProject" />
+                            </TabPanel>
+                            <TabPanel>
+                            <Card month ="ClientProject" />
                             </TabPanel>
                             <TabPanel>
                                 <p>three!</p>
