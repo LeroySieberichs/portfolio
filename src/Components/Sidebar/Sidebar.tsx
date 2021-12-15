@@ -73,6 +73,7 @@ function Loggedin(props: { isloggedin: any; }) {
   return null;
 }
 
+//funciton for rendering the sidebar
 const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
   const [user] = useAuthState(firebase.auth());
   // , loading, error

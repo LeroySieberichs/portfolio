@@ -9,9 +9,9 @@ export default function Card(props: { month: any; }) {
 
   var cardList: JSX.Element[] = []
 
-
   const { colorMode } = useColorMode()
 
+  //retrieve data from firebase
   const [value, loading, error] = useCollectionData(
     firestore.collection('portfolio').where("month", "==", props.month),
     {
@@ -19,6 +19,7 @@ export default function Card(props: { month: any; }) {
     }
   );
 
+  //Loop through given data and create a card for each entry, push the card to the list of cards
   function cardGenerate(data: any[]) {
     data.forEach((item: any) => {
 
@@ -31,8 +32,8 @@ export default function Card(props: { month: any; }) {
     return sortedArray;
   }
 
+  // seperate part for parsing image data into a clickable image
   const image = (data: string) => {
-    console.log(data);
 
     if (data != null) {
       return (
@@ -52,6 +53,7 @@ export default function Card(props: { month: any; }) {
     return null
   }
 
+  //Recieves data and turns it into a readable card (the many things you see on the pages)
   const card = (data: { imagename: any; title: boolean | React.ReactChild | React.ReactFragment | React.ReactPortal | null | undefined; description: boolean | React.ReactChild | React.ReactFragment | React.ReactPortal | null | undefined; feedback: string; }) => {
     return (
       <div>
@@ -85,7 +87,7 @@ export default function Card(props: { month: any; }) {
                 <span>{data.description}</span>
               </chakra.p>
             </Box>
-            
+
           </Box>
           {image(data.feedback)}
         </Box>

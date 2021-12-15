@@ -7,6 +7,8 @@ import {
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth } from "../../lib/firebase";
 export default function AuthCheck(props) {
+  
+  //defining variables of the hook, user being the retrieved data, loading is called when user hasn't been retrieved yet, and error is when nothing could be retrieved
     const [user, loading,error] = useAuthState(auth);
     if (error) {
       return (
