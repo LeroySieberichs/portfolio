@@ -70,6 +70,7 @@ export default function Card(props: { month: any; }) {
             <Box>
               <Link
                 display="block"
+                href={data.link}
                 color={colorMode}
                 fontWeight="bold"
                 fontSize="2xl"
