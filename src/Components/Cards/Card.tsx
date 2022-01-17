@@ -34,7 +34,6 @@ export default function Card(props: { month: any; }) {
 
   // seperate part for parsing image data into a clickable image
   const image = (data: string) => {
-
     if (data != null) {
       return (
         <Link href={process.env.PUBLIC_URL + 'img/' + data + '.png'} isExternal>
@@ -47,7 +46,6 @@ export default function Card(props: { month: any; }) {
             alt="Article"
           />
         </Link>
-
       )
     }
     return null
